@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Property;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\ToolsController;
 
 Route::get('/', function () {
     $properties = Property::where('is_visible', true)->latest()->take(3)->get(); 
@@ -36,6 +37,9 @@ Route::get('/blog', function () {
 Route::get('/blog/novo-perfil-investidor-luxo', function () {
     return view('blog.show');
 })->name('blog.show');
+
+Route::get('/ferramentas/mais-valias', [ToolsController::class, 'showGainsSimulator'])->name('tools.gains');
+Route::post('/ferramentas/mais-valias/calcular', [ToolsController::class, 'calculateGains'])->name('tools.gains.calculate');
 
 Route::get('/blog/inteligencia-mercado-redefine-investimento', function () {
     return view('blog.show-intelligence');

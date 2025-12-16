@@ -119,7 +119,8 @@
                         {{-- Taxa Fixa Manual (Se Fixa) --}}
                         <div x-show="rateType === 'fixed'" x-transition>
                             <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Taxa Fixa Anual (%)</label>
-                            <input type="number" step="0.01" x-model.number="fixedRate" @input="calculate()" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-gold" placeholder="Ex: 3.5">
+                            {{-- Valor padrão alterado para 4.0% --}}
+                            <input type="number" step="0.01" x-model.number="fixedRate" @input="calculate()" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-gold" placeholder="Ex: 4.0">
                         </div>
 
                         {{-- Spread --}}
@@ -140,29 +141,7 @@
                     </div>
                 </div>
 
-                {{-- 3. Seguros (Opcional) --}}
-                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2 flex items-center gap-2">
-                        <span class="bg-brand-gold text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
-                        Seguros Obrigatórios
-                    </h3>
-                    
-                    <div class="mb-4 flex items-center gap-2">
-                        <input type="checkbox" id="autoInsurance" x-model="autoInsurance" @change="calculate()" class="rounded text-brand-gold focus:ring-brand-gold">
-                        <label for="autoInsurance" class="text-sm text-gray-700">Calcular estimativa automática de seguros</label>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" :class="{'opacity-50 pointer-events-none': autoInsurance}">
-                        <div>
-                            <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Seguro de Vida (€/mês)</label>
-                            <input type="number" step="0.01" x-model.number="lifeInsurance" @input="calculate()" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-gold">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Seguro Multirriscos (€/mês)</label>
-                            <input type="number" step="0.01" x-model.number="multiRiskInsurance" @input="calculate()" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-gold">
-                        </div>
-                    </div>
-                </div>
+                {{-- 3. Seguros Obrigatórios REMOVIDO CONFORME SOLICITADO --}}
 
             </div>
 
@@ -190,10 +169,7 @@
                                 <span class="text-gray-400">Imposto de Selo (Juros 4%)</span>
                                 <span>€ <span x-text="formatMoney(monthlyStampDuty)"></span></span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-400">Seguros (Vida + Casa)</span>
-                                <span>€ <span x-text="formatMoney(totalInsurance)"></span></span>
-                            </div>
+                            {{-- Linha de Seguros Removida --}}
                         </div>
                     </div>
 
@@ -238,10 +214,10 @@
 
                     {{-- Botão CTA --}}
                     <div class="text-center">
-                         <a href="{{ route('contact') }}" class="block w-full bg-brand-gold text-brand-black font-bold uppercase tracking-widest py-4 rounded-xl shadow-lg hover:bg-yellow-500 transition-all text-xs">
-                            Pedir Aprovação Bancária
-                        </a>
-                        <p class="text-[10px] text-gray-400 mt-2">Valores meramente indicativos. Não dispensa proposta oficial.</p>
+                           <a href="{{ route('contact') }}" class="block w-full bg-brand-gold text-brand-black font-bold uppercase tracking-widest py-4 rounded-xl shadow-lg hover:bg-yellow-500 transition-all text-xs">
+                                Pedir Aprovação Bancária
+                            </a>
+                            <p class="text-[10px] text-gray-400 mt-2">Valores meramente indicativos. Não dispensa proposta oficial.</p>
                     </div>
 
                 </div>
@@ -261,19 +237,16 @@
             age: 30,
             rateType: 'variable', // variable, fixed
             euriborRate: 2.17, // 6M Default
-            fixedRate: 3.5,
+            fixedRate: 4.0, // <-- NOVO VALOR PADRÃO
             spread: 0.85,
             tan: 0,
             
-            autoInsurance: true,
-            lifeInsurance: 0,
-            multiRiskInsurance: 0,
+            // Variáveis de Seguros REMOVIDAS
             
             // Outputs
             monthlyPayment: 0,
             monthlyStampDuty: 0,
-            totalInsurance: 0,
-            monthlyTotal: 0,
+            monthlyTotal: 0, // totalInsurance removido
             
             openingStampDuty: 0,
             bankFees: 550, // Estimativa dossiê + avaliação
@@ -331,15 +304,11 @@
                 if (this.rateType === 'variable') {
                     this.tan = this.euriborRate + this.spread;
                 } else {
-                    this.tan = this.fixedRate + this.spread; // Geralmente na fixa o spread já está embutido, mas deixamos somar para flexibilidade ou assume-se spread 0. Vamos somar.
-                    // Correção: Taxa Fixa contratada já é a taxa final. O spread é contabilístico.
-                    // Para simplificar simulador: Se Fixa, usa o valor do input FixedRate como TAN final (ou soma spread se o user quiser). 
-                    // Assumindo input = Taxa Final desejada (ex: 3.5%).
+                    // Taxa Fixa contratada já é a taxa final. Usa o fixedRate como TAN.
                     this.tan = this.fixedRate; 
                 }
 
                 // 3. Cálculo da Prestação (PMT)
-                // i = taxa mensal
                 let i = (this.tan / 100) / 12;
                 let n = this.years * 12;
 
@@ -350,27 +319,11 @@
                 }
 
                 // 4. Imposto de Selo Mensal sobre Juros (4%)
-                // No sistema francês, juros variam mês a mês. 
-                // Para uma "Prestação Média/Referência", calculamos sobre o 1º mês ou uma média?
-                // O simulador padrão mostra a 1ª prestação.
                 let firstMonthInterest = this.loanAmount * i;
                 this.monthlyStampDuty = firstMonthInterest * 0.04;
 
-                // 5. Seguros
-                if (this.autoInsurance) {
-                    // Estimativa Vida: ~0.035% do capital em dívida (média conservadora 30-40 anos)
-                    // Fator idade: aumentamos ligeiramente com a idade
-                    let lifeRate = 0.00035 + ((this.age - 30) * 0.00001); 
-                    if (lifeRate < 0.0002) lifeRate = 0.0002;
-                    
-                    this.lifeInsurance = this.loanAmount * lifeRate;
-
-                    // Estimativa Multirriscos: ~0.08% valor do imóvel / 12
-                    this.multiRiskInsurance = (this.propertyValue * 0.0008) / 12;
-                }
-                
-                this.totalInsurance = this.lifeInsurance + this.multiRiskInsurance;
-                this.monthlyTotal = this.monthlyPayment + this.monthlyStampDuty + this.totalInsurance;
+                // 5. Total Mensal (Apenas Prestação + IS Juros)
+                this.monthlyTotal = this.monthlyPayment + this.monthlyStampDuty;
 
                 // 6. Custos Iniciais
                 // IS Abertura: 0.6% (para prazos > 5 anos)
@@ -381,17 +334,11 @@
                 let totalPayments = this.monthlyPayment * n;
                 this.totalInterest = totalPayments - this.loanAmount;
                 
-                // MTIC = Total Pagamentos + Seguros Totais + Custos Iniciais (IS Abertura + Comissões) + IS Juros Totais
-                // IS Juros Total = TotalInterest * 0.04
+                // MTIC = Total Pagamentos + IS Juros Totais + Custos Iniciais (IS Abertura + Comissões)
                 let totalStampOnInterest = this.totalInterest * 0.04;
-                let totalLife = this.lifeInsurance * n; // Simplificação (na realidade baixa com a amortização)
-                // Para MTIC ser mais real na Vida, assumimos média 50% do capital (regra de bolso rápida)
-                // Se for sistema decrecente, paga-se muito menos seguro no fim. Vamos ajustar para (VidaInicial * n) * 0.6
-                if(this.autoInsurance) totalLife = totalLife * 0.6; 
-
-                let totalMulti = this.multiRiskInsurance * n; // Constante
-
-                this.mtic = totalPayments + totalStampOnInterest + totalLife + totalMulti + this.openingStampDuty + this.bankFees;
+                
+                // Cálculo MTIC sem Seguros
+                this.mtic = totalPayments + totalStampOnInterest + this.openingStampDuty + this.bankFees;
             }
         }
     }

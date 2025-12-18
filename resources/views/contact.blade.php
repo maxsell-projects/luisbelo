@@ -33,7 +33,7 @@
                     <h4 class="text-[10px] uppercase tracking-[0.4em] text-slate-900 font-bold">Endereço</h4>
                     <p class="text-lg font-light leading-relaxed text-slate-500 italic">
                         Rua Serpa Pinto, 77 A<br>
-                        2640-534, Mafra – Mafra
+                        2640-534, Mafra – Portugal
                     </p>
                 </div>
 
@@ -75,7 +75,13 @@
     </div>
 </section>
 
-<section class="h-[60vh] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000" data-aos="fade">
-    <img src="{{ asset('img/photo.jpeg') }}" class="w-full h-full object-cover" alt="Localização">
+<section class="h-[60vh] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 border-t border-slate-100" data-aos="fade">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.4423455135114!2d-9.333103423425004!3d38.93729574442657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ed609f30b9e83%3A0x67396c05f0a0d421!2sR.%20Serpa%20Pinto%2077%2C%202640-534%20Mafra%2C%20Portugal!5e0!3m2!1spt-PT!2sbr!4v1700000000000!5m2!1spt-PT!2sbr" 
+        class="w-full h-full border-0" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 </section>
 @endsection

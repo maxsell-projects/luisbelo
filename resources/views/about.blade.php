@@ -75,7 +75,7 @@
                     ['01', 'Rigor', 'Actuação precisa, planeada e sem improvisos. Cada passo é pensado para proteger os teus interesses.'],
                     ['02', 'Transparência', 'Comunicação directa e sem rodeios. Acreditar na verdade constrói confiança — e confiança vende.'],
                     ['03', 'Ética', 'Trato o teu património com o mesmo cuidado que trato o meu nome. Nunca recomendo o que não faria.'],
-                    ['04', 'Excelência', 'Desde a primeira conversa ao fecho da escritura, ofereço uma experiência elevada — porque os teus não têm preço.']
+                    ['04', 'Excelência', 'Desde a primeira conversa ao fecho da escritura, ofereço uma experiência elevada — porque os teus sonhos não têm preço.']
                 ];
             @endphp
 

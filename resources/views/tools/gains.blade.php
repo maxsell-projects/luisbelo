@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         
-                        {{-- CONSTRUÇÃO PRÓPRIA (Movido para cá para ficar igual à lógica corrigida) --}}
+                        {{-- CONSTRUÇÃO PRÓPRIA --}}
                         <div class="md:col-span-2 pt-4 border-t border-gray-50">
                              <label class="block text-sm font-medium text-gray-700 mb-3">A habitação foi construída por si?</label>
                              <div class="flex gap-6">
@@ -113,7 +113,6 @@
                         <div>
                             <label class="block text-xs font-bold text-gray-500 mb-1">Obras e melhorias (€)</label>
                             <input type="number" step="0.01" x-model="form.expenses_works" class="w-full rounded border-gray-300 text-sm focus:border-brand-gold focus:ring-brand-gold">
-                            {{-- AVISO LEGAL --}}
                             <p class="text-[10px] text-gray-400 mt-1">*Apenas obras realizadas nos últimos 12 anos.</p>
                         </div>
                         <div>
@@ -181,12 +180,12 @@
                             </div>
                         </div>
 
-                        {{-- BLOCO DE BENEFÍCIOS (Reinvestimento / Amortização) --}}
+                        {{-- BLOCO DE BENEFÍCIOS (Reinvestimento / Amortização / Reformados) --}}
                         <div class="space-y-6 p-4 rounded-lg border border-green-100 bg-green-50">
                             <h4 class="text-lg font-bold text-green-800">Opções de Isenção e Benefícios</h4>
 
-                            {{-- Reinvestimento (SÓ HPP) --}}
-                            <div class="border-b border-green-100 pb-4" x-show="form.hpp_status === 'Sim'">
+                            {{-- 1. Reinvestimento (SÓ HPP) --}}
+                            <div class="border-b border-green-200 pb-4" x-show="form.hpp_status === 'Sim'">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Pretende reinvestir o valor da venda numa nova HPP?</label>
                                 <div class="flex gap-6 mb-3">
                                     <label class="inline-flex items-center cursor-pointer"><input type="radio" value="Sim" x-model="form.reinvest_intention" class="text-brand-gold focus:ring-brand-gold w-5 h-5"><span class="ml-2">Sim</span></label>
@@ -198,10 +197,9 @@
                                 </div>
                             </div>
 
-                            {{-- Amortização (TODOS - Norma Mais Habitação) --}}
-                            <div class="border-b border-green-100 pb-4">
+                            {{-- 2. Amortização (TODOS) --}}
+                            <div class="border-b border-green-200 pb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Pretende amortizar crédito habitação (HPP) com a venda?</label>
-                                {{-- Aviso para Secundários --}}
                                 <p class="text-[10px] text-gray-500 mb-3" x-show="form.hpp_status !== 'Sim'">
                                     *Válido para vendas de secundários/terrenos em 2023/2024 (Lei Mais Habitação).
                                 </p>
@@ -215,8 +213,8 @@
                                 </div>
                             </div>
 
-                            {{-- Reformados (SÓ HPP) --}}
-                            <div x-show="form.hpp_status === 'Sim'">
+                            {{-- 3. Reformados (SÓ HPP) --}}
+                            <div class="pt-2" x-show="form.hpp_status === 'Sim'">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Está reformado ou tem mais de 65 anos?</label>
                                 <div class="flex gap-6">
                                     <label class="inline-flex items-center cursor-pointer"><input type="radio" value="Sim" x-model="form.retired_status" class="text-brand-gold focus:ring-brand-gold w-5 h-5"><span class="ml-2">Sim</span></label>
@@ -356,7 +354,7 @@
 
         </div>
 
-        {{-- Modal de Lead (Mantido igual) --}}
+        {{-- Modal de Lead --}}
         <div x-show="showLeadModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div x-show="showLeadModal" x-transition.opacity class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true" @click="showLeadModal = false"></div>

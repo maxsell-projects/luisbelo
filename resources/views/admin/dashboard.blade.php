@@ -1,145 +1,146 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Diogo Maia</title>
+    <title>Painel de Curadoria | Luís Belo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Montserrat', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                        didot: ['GFS Didot', 'serif'],
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gray-50 font-sans text-gray-900">
+<body class="bg-slate-50 font-sans text-slate-900">
 
     <div class="flex h-screen overflow-hidden">
-        <aside class="w-64 bg-neutral-900 text-white flex flex-col shadow-xl z-20">
-            <div class="p-8 text-center border-b border-white/10">
-                <h1 class="font-didot text-2xl tracking-widest">DIOGO MAIA</h1>
-                <p class="text-[10px] uppercase tracking-widest text-[#c5a059] mt-2">Admin Panel</p>
+        <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-20">
+            <div class="p-10 text-center border-b border-white/5">
+                <h1 class="font-serif text-xl tracking-[0.3em] uppercase">
+                    LUÍS<span class="text-slate-500 font-light">BELO</span>
+                </h1>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-slate-500 mt-3 font-bold">DASHBOARD</p>
             </div>
-            <nav class="flex-1 p-4 space-y-2 mt-4">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 bg-[#c5a059] text-white rounded text-sm font-medium shadow-md">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                    Dashboard
+            
+            <nav class="flex-1 p-6 space-y-3 mt-6">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-6 py-4 bg-white/5 border-l-2 border-white text-white text-xs uppercase tracking-widest font-bold transition-all">
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                    Visão Geral
                 </a>
-                <a href="{{ route('admin.properties.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded text-sm font-medium transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                    Gerir Imóveis
+                
+                <a href="{{ route('admin.properties.index') }}" class="flex items-center gap-4 px-6 py-4 text-slate-500 hover:text-white hover:bg-white/5 text-xs uppercase tracking-widest font-bold transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    Imóveis
                 </a>
-                <a href="{{ route('home') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded text-sm font-medium transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                    Ver Site
+                
+                <a href="{{ route('home') }}" target="_blank" class="flex items-center gap-4 px-6 py-4 text-slate-500 hover:text-white hover:bg-white/5 text-xs uppercase tracking-widest font-bold transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    Ver Portal
                 </a>
             </nav>
-            <div class="p-4 border-t border-white/10">
+
+            <div class="p-8 border-t border-white/5">
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="w-full flex items-center gap-3 px-4 py-2 text-xs uppercase tracking-widest text-gray-500 hover:text-red-400 transition">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-                        Sair
+                    <button type="submit" class="flex items-center gap-3 text-[9px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-black">
+                        Encerrar Sessão
                     </button>
                 </form>
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto bg-gray-50">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-10">
-                    <div>
-                        <h2 class="text-3xl font-serif text-gray-800">Visão Geral</h2>
-                        <p class="text-gray-500 text-sm mt-1">Bem-vindo de volta ao seu painel de controlo.</p>
+        <main class="flex-1 overflow-y-auto bg-slate-50">
+            <div class="p-12 max-w-7xl mx-auto">
+                <div class="flex justify-between items-center mb-16">
+                    <div class="space-y-2">
+                        <h2 class="text-4xl font-serif text-slate-900 leading-tight italic">Painel de Curadoria</h2>
+                        <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em] font-bold">Bem-vindo, Luís Belo</p>
                     </div>
-                    <a href="{{ route('admin.properties.create') }}" class="flex items-center gap-2 bg-[#c5a059] text-white px-6 py-3 rounded shadow-lg hover:bg-[#b08d4b] transition font-bold uppercase text-xs tracking-widest transform hover:-translate-y-0.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        Novo Imóvel
+                    <a href="{{ route('admin.properties.create') }}" class="group relative px-8 py-4 bg-slate-900 overflow-hidden">
+                        <span class="relative z-10 text-white text-[10px] uppercase tracking-[0.3em] font-bold">Novo Ativo</span>
+                        <div class="absolute inset-0 bg-slate-800 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 border border-slate-100 shadow-sm flex items-center justify-between group hover:border-slate-300 transition-colors">
                         <div>
-                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Total de Imóveis</p>
-                            <p class="text-4xl font-serif text-gray-800">{{ \App\Models\Property::count() }}</p>
-                        </div>
-                        <div class="p-4 bg-gray-50 rounded-full text-gray-400">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            <p class="text-[9px] uppercase tracking-[0.4em] text-slate-400 mb-3 font-bold">Total Coleção</p>
+                            <p class="text-5xl font-serif text-slate-900 italic">{{ \App\Models\Property::count() }}</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="bg-white p-8 border border-slate-100 shadow-sm flex items-center justify-between group hover:border-slate-300 transition-colors">
                         <div>
-                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Para Venda</p>
-                            <p class="text-4xl font-serif text-[#c5a059]">{{ \App\Models\Property::where('status', 'Venda')->count() }}</p>
-                        </div>
-                        <div class="p-4 bg-[#c5a059]/10 rounded-full text-[#c5a059]">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <p class="text-[9px] uppercase tracking-[0.4em] text-slate-400 mb-3 font-bold">Ativos à Venda</p>
+                            <p class="text-5xl font-serif text-slate-900 italic">{{ \App\Models\Property::where('status', 'Venda')->count() }}</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="bg-white p-8 border border-slate-100 shadow-sm flex items-center justify-between group hover:border-slate-300 transition-colors">
                         <div>
-                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Para Arrendamento</p>
-                            <p class="text-4xl font-serif text-gray-800">{{ \App\Models\Property::where('status', 'Arrendamento')->count() }}</p>
-                        </div>
-                        <div class="p-4 bg-gray-50 rounded-full text-gray-400">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <p class="text-[9px] uppercase tracking-[0.4em] text-slate-400 mb-3 font-bold">Arrendamentos</p>
+                            <p class="text-5xl font-serif text-slate-900 italic">{{ \App\Models\Property::where('status', 'Arrendamento')->count() }}</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="px-8 py-6 border-b border-gray-100">
-                        <h3 class="font-serif text-lg text-gray-800">Últimos Imóveis Adicionados</h3>
+                <div class="bg-white border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="px-10 py-8 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-serif text-xl italic text-slate-900">Adições Recentes</h3>
                     </div>
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-50 text-xs uppercase text-gray-500 font-medium">
-                            <tr>
-                                <th class="px-8 py-4">Imóvel</th>
-                                <th class="px-8 py-4">Preço</th>
-                                <th class="px-8 py-4">Localização</th>
-                                <th class="px-8 py-4">Status</th>
-                                <th class="px-8 py-4 text-right">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            @foreach(\App\Models\Property::latest()->take(5)->get() as $property)
-                            <tr class="hover:bg-gray-50 transition-colors">
-                                <td class="px-8 py-4">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 rounded bg-gray-200 overflow-hidden flex-shrink-0">
-                                            @if($property->cover_image)
-                                                <img src="{{ asset('storage/'.$property->cover_image) }}" class="w-full h-full object-cover">
-                                            @endif
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 text-[9px] uppercase tracking-[0.3em] text-slate-400 font-black">
+                                <tr>
+                                    <th class="px-10 py-5">Elemento</th>
+                                    <th class="px-10 py-5">Valor</th>
+                                    <th class="px-10 py-5">Localização</th>
+                                    <th class="px-10 py-5">Transação</th>
+                                    <th class="px-10 py-5 text-right">Acções</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50">
+                                @foreach(\App\Models\Property::latest()->take(6)->get() as $property)
+                                <tr class="hover:bg-slate-50/50 transition-colors group">
+                                    <td class="px-10 py-6">
+                                        <div class="flex items-center gap-6">
+                                            <div class="w-16 h-16 bg-slate-100 overflow-hidden shadow-sm">
+                                                @if($property->cover_image)
+                                                    <img src="{{ asset('storage/'.$property->cover_image) }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <p class="font-serif text-lg text-slate-900">{{ Str::limit($property->title, 25) }}</p>
+                                                <p class="text-[9px] uppercase tracking-widest text-slate-400">{{ $property->type }}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p class="font-medium text-gray-800">{{ Str::limit($property->title, 30) }}</p>
-                                            <p class="text-xs text-gray-500">{{ $property->type }}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-8 py-4 font-medium text-gray-600">€ {{ number_format($property->price, 0, ',', '.') }}</td>
-                                <td class="px-8 py-4 text-gray-500">{{ $property->location }}</td>
-                                <td class="px-8 py-4">
-                                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider {{ $property->status == 'Venda' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700' }}">
-                                        {{ $property->status }}
-                                    </span>
-                                </td>
-                                <td class="px-8 py-4 text-right">
-                                    <a href="{{ route('admin.properties.edit', $property) }}" class="text-[#c5a059] hover:text-[#b08d4b] text-sm font-medium mr-4">Editar</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                    <td class="px-10 py-6">
+                                        <span class="font-serif text-slate-900">{{ number_format($property->price, 0, ',', '.') }}€</span>
+                                    </td>
+                                    <td class="px-10 py-6">
+                                        <span class="text-xs text-slate-500 font-light tracking-wide italic">{{ $property->location }}</span>
+                                    </td>
+                                    <td class="px-10 py-6">
+                                        <span class="text-[9px] uppercase tracking-[0.2em] font-black {{ $property->status == 'Venda' ? 'text-slate-900' : 'text-slate-400' }}">
+                                            {{ $property->status }}
+                                        </span>
+                                    </td>
+                                    <td class="px-10 py-6 text-right">
+                                        <a href="{{ route('admin.properties.edit', $property) }}" class="text-[10px] uppercase tracking-widest font-black text-slate-400 hover:text-slate-900 transition-colors">Editar</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </main>

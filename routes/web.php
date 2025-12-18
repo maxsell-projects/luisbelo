@@ -53,6 +53,9 @@ Route::get('/blog/lisboa-cascais-algarve-eixos-valor', function () {
 Route::get('/contato', function () {
     return view('contact');
 })->name('contact');
+
+// Esta é a rota que está a faltar e causa o erro:
+Route::post('/contato', [App\Http\Controllers\ToolsController::class, 'sendContact'])->name('contact.submit');
 // ----------------------------------
 
 Route::prefix('admin')->group(function () {

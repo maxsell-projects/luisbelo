@@ -1,114 +1,73 @@
 @extends('layouts.app')
 
+@section('title', 'Contacto Privado | Luís Belo')
+
 @section('content')
+<section class="relative pt-48 pb-24 bg-white overflow-hidden">
+    <div class="max-container px-6 lg:px-12">
+        <div class="max-w-3xl" data-aos="fade-up">
+            <span class="text-[10px] uppercase tracking-[0.6em] text-slate-400 font-bold mb-6 block">Agendar Reunião</span>
+            <h1 class="text-6xl md:text-7xl font-serif text-slate-900 leading-tight">
+                Inicie a sua <br><span class="italic text-slate-400">jornada conosco.</span>
+            </h1>
+        </div>
 
-<div class="bg-brand-black text-white py-24 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <p class="text-brand-gold text-xs uppercase tracking-[0.4em] mb-4">Fale Conosco</p>
-        <h1 class="text-3xl md:text-5xl font-serif">Estamos à Sua Espera</h1>
-        <p class="mt-4 text-gray-400 font-light max-w-2xl mx-auto">
-            Seja para comprar, vender ou avaliar o seu imóvel, a nossa equipa está pronta para oferecer um serviço de excelência.
-        </p>
-    </div>
-</div>
-
-<section class="py-20 bg-white relative">
-    <div class="container mx-auto px-6 md:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div class="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-20">
             
-            <div class="space-y-12">
-                <div>
-                    <h3 class="text-2xl font-serif text-brand-black mb-6">Informações de Contacto</h3>
-                    <p class="text-gray-500 font-light leading-relaxed mb-8">
-                        Privilegiamos o contacto direto e personalizado. Visite-nos no nosso escritório ou envie uma mensagem direta.
+            <div class="lg:col-span-4 space-y-16" data-aos="fade-right" data-aos-delay="200">
+                <div class="space-y-4">
+                    <h4 class="text-[10px] uppercase tracking-[0.4em] text-slate-900 font-bold">SAC</h4>
+                    <p class="text-2xl font-serif text-slate-500 hover:text-slate-900 transition-colors">
+                        <a href="tel:919383222">919 383 222</a>
                     </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 border border-brand-gold/30 rounded-full text-brand-gold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold uppercase tracking-widest text-brand-black mb-1">Escritório</h4>
-                                <p class="text-gray-600 font-light">Av. Casal Ribeiro 12B<br>Lisboa, Portugal</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 border border-brand-gold/30 rounded-full text-brand-gold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold uppercase tracking-widest text-brand-black mb-1">Telefone</h4>
-                                <p class="text-gray-600 font-light">+351 910 739 610</p>
-                                <p class="text-xs text-gray-400 mt-1">Segunda a Sexta, 09:00 - 18:00</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 border border-brand-gold/30 rounded-full text-brand-gold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold uppercase tracking-widest text-brand-black mb-1">Email</h4>
-                                <p class="text-gray-600 font-light">dmgmaia@remax.pt</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="w-full h-64 bg-gray-200 rounded overflow-hidden grayscale hover:grayscale-0 transition duration-700">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.513534867376!2d-9.147772623681536!3d38.71813955802526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1c337b5c3208e9%3A0x6739462279075727!2sAv.%20da%20Liberdade%20110%2C%201250-146%20Lisboa%2C%20Portugal!5e0!3m2!1spt-PT!2sbr!4v1709123456789!5m2!1spt-PT!2sbr" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                <div class="space-y-4">
+                    <h4 class="text-[10px] uppercase tracking-[0.4em] text-slate-900 font-bold">Email</h4>
+                    <p class="text-2xl font-serif text-slate-500 hover:text-slate-900 transition-colors">
+                        <a href="mailto:luis.belo@remax.pt">luis.belo@remax.pt</a>
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="text-[10px] uppercase tracking-[0.4em] text-slate-900 font-bold">Endereço</h4>
+                    <p class="text-lg font-light leading-relaxed text-slate-500 italic">
+                        Rua Serpa Pinto, 77 A<br>
+                        2640-534, Mafra – Mafra
+                    </p>
+                </div>
+
+                <div class="pt-8 border-t border-slate-100 flex gap-8">
+                    <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">Instagram</a>
+                    <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">LinkedIn</a>
                 </div>
             </div>
 
-            <div class="bg-gray-50 p-8 md:p-10 rounded border border-gray-100 shadow-lg">
-                <h3 class="text-2xl font-serif text-brand-black mb-6">Envie uma Mensagem</h3>
-                
-                <form action="#" method="POST" class="space-y-6">
+            <div class="lg:col-span-8 bg-slate-50 p-12 md:p-20 shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                <form action="{{ route('contact.submit') }}" method="POST" class="space-y-12">
                     @csrf
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Nome</label>
-                            <input type="text" name="name" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors" placeholder="Seu nome">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="relative group">
+                            <label class="block text-[9px] uppercase tracking-widest text-slate-400 mb-2">Nome Completo</label>
+                            <input type="text" name="name" required class="w-full bg-transparent border-b border-slate-200 focus:border-slate-900 focus:ring-0 px-0 py-2 text-sm transition-colors outline-none">
                         </div>
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Telefone</label>
-                            <input type="tel" name="phone" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors" placeholder="+351">
+                        <div class="relative group">
+                            <label class="block text-[9px] uppercase tracking-widest text-slate-400 mb-2">Email Profissional</label>
+                            <input type="email" name="email" required class="w-full bg-transparent border-b border-slate-200 focus:border-slate-900 focus:ring-0 px-0 py-2 text-sm transition-colors outline-none">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                        <input type="email" name="email" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors" placeholder="seu@email.com">
+                    <div class="relative group">
+                        <label class="block text-[9px] uppercase tracking-widest text-slate-400 mb-2">Como podemos ajudar?</label>
+                        <textarea name="message" rows="4" required class="w-full bg-transparent border-b border-slate-200 focus:border-slate-900 focus:ring-0 px-0 py-2 text-sm transition-colors outline-none resize-none"></textarea>
                     </div>
 
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Assunto</label>
-                        <select name="subject" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors text-gray-600">
-                            <option>Interesse em Comprar</option>
-                            <option>Vender Propriedade</option>
-                            <option>Parcerias / Investimento</option>
-                            <option>Outros Assuntos</option>
-                        </select>
+                    <div class="flex justify-end">
+                        <button type="submit" class="group relative px-16 py-5 bg-slate-900 overflow-hidden transition-all duration-500">
+                            <span class="relative z-10 text-white text-[10px] uppercase tracking-[0.4em] font-bold">Enviar Mensagem</span>
+                            <div class="absolute inset-0 bg-slate-800 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                        </button>
                     </div>
-
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Mensagem</label>
-                        <textarea name="message" rows="5" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors resize-none" placeholder="Como podemos ajudar?"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-brand-black text-white font-bold py-4 hover:bg-brand-gold hover:text-white transition-colors uppercase tracking-widest text-xs mt-4 rounded shadow-lg">
-                        Enviar Mensagem
-                    </button>
                 </form>
             </div>
 
@@ -116,4 +75,7 @@
     </div>
 </section>
 
+<section class="h-[60vh] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000" data-aos="fade">
+    <img src="{{ asset('img/photo.jpeg') }}" class="w-full h-full object-cover" alt="Localização">
+</section>
 @endsection

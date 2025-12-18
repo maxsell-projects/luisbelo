@@ -21,7 +21,7 @@
         
         <div class="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div class="lg:col-span-7 overflow-hidden shadow-2xl" data-aos="fade-right" data-aos-delay="200">
-                <img src="{{ asset('img/luis.webp') }}" 
+                <img src="{{ asset('img/photo.jpg') }}" 
                      class="w-full h-[700px] object-cover hover:scale-105 transition-transform duration-[3s]" 
                      alt="Luís Belo">
             </div>

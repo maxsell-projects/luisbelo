@@ -6,6 +6,16 @@
     <title>Novo Imóvel | Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo extra para o botão de remover a foto */
+        .remove-btn {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .photo-container:hover .remove-btn {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
     <div class="flex h-screen">
@@ -21,6 +31,17 @@
             <div class="max-w-5xl mx-auto">
                 <h2 class="text-3xl font-serif mb-8">Novo Imóvel (Padrão Idealista)</h2>
 
+                @if ($errors->any())
+                    <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                        <p class="font-bold">Ops! Algo correu mal:</p>
+                        <ul class="list-disc list-inside text-sm">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ route('admin.properties.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
                     @csrf
 
@@ -29,29 +50,29 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Título do Anúncio</label>
-                                <input type="text" name="title" required class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: Moradia T4 de Luxo com Piscina">
+                                <input type="text" name="title" value="{{ old('title') }}" required class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: Moradia T4 de Luxo com Piscina">
                             </div>
                             
                             <div class="grid grid-cols-3 gap-6">
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Tipo</label>
                                     <select name="type" class="w-full border border-gray-200 rounded px-4 py-3 bg-white">
-                                        <option value="Apartamento">Apartamento</option>
-                                        <option value="Moradia">Moradia / Villa</option>
-                                        <option value="Terreno">Terreno</option>
-                                        <option value="Comercial">Comercial</option>
+                                        <option value="Apartamento" {{ old('type') == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
+                                        <option value="Moradia" {{ old('type') == 'Moradia' ? 'selected' : '' }}>Moradia / Villa</option>
+                                        <option value="Terreno" {{ old('type') == 'Terreno' ? 'selected' : '' }}>Terreno</option>
+                                        <option value="Comercial" {{ old('type') == 'Comercial' ? 'selected' : '' }}>Comercial</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Status</label>
                                     <select name="status" class="w-full border border-gray-200 rounded px-4 py-3 bg-white">
-                                        <option value="Venda">Venda</option>
-                                        <option value="Arrendamento">Arrendamento</option>
+                                        <option value="Venda" {{ old('status') == 'Venda' ? 'selected' : '' }}>Venda</option>
+                                        <option value="Arrendamento" {{ old('status') == 'Arrendamento' ? 'selected' : '' }}>Arrendamento</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Preço (€)</label>
-                                    <input type="number" name="price" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="0.00">
+                                    <input type="number" name="price" value="{{ old('price') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="0.00">
                                 </div>
                             </div>
                         </div>
@@ -62,51 +83,52 @@
                         <div class="grid grid-cols-2 gap-6 mb-4">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Concelho / Zona</label>
-                                <input type="text" name="location" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: Cascais, Quinta da Marinha">
+                                <input type="text" name="location" value="{{ old('location') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: Cascais, Quinta da Marinha">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Morada (Opcional)</label>
-                                <input type="text" name="address" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Rua...">
+                                <input type="text" name="address" value="{{ old('address') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Rua...">
                             </div>
                         </div>
                         <div class="grid grid-cols-4 gap-6">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Área Bruta (m²)</label>
-                                <input type="number" name="area_gross" class="w-full border border-gray-200 rounded px-4 py-3">
+                                <input type="number" name="area_gross" value="{{ old('area_gross') }}" class="w-full border border-gray-200 rounded px-4 py-3">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Quartos</label>
-                                <input type="number" name="bedrooms" class="w-full border border-gray-200 rounded px-4 py-3">
+                                <input type="number" name="bedrooms" value="{{ old('bedrooms') }}" class="w-full border border-gray-200 rounded px-4 py-3">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Casas de Banho</label>
-                                <input type="number" name="bathrooms" class="w-full border border-gray-200 rounded px-4 py-3">
+                                <input type="number" name="bathrooms" value="{{ old('bathrooms') }}" class="w-full border border-gray-200 rounded px-4 py-3">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Cert. Energética</label>
                                 <select name="energy_rating" class="w-full border border-gray-200 rounded px-4 py-3 bg-white">
                                     <option value="">Selecione</option>
-                                    <option value="A+">A+</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                    <option value="A+" {{ old('energy_rating') == 'A+' ? 'selected' : '' }}>A+</option>
+                                    <option value="A" {{ old('energy_rating') == 'A' ? 'selected' : '' }}>A</option>
+                                    <option value="B" {{ old('energy_rating') == 'B' ? 'selected' : '' }}>B</option>
+                                    <option value="C" {{ old('energy_rating') == 'C' ? 'selected' : '' }}>C</option>
+                                    <option value="D" {{ old('energy_rating') == 'D' ? 'selected' : '' }}>D</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-6 mt-4">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Andar</label>
-                                <input type="text" name="floor" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: 2º Esq, R/C">
+                                <input type="text" name="floor" value="{{ old('floor') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="Ex: 2º Esq, R/C">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Orientação Solar</label>
                                 <select name="orientation" class="w-full border border-gray-200 rounded px-4 py-3 bg-white">
                                     <option value="">Selecione</option>
-                                    <option value="Norte">Norte</option>
-                                    <option value="Sul">Sul</option>
-                                    <option value="Este">Este</option>
-                                    <option value="Oeste">Oeste</option>
-                                    <option value="Nascente/Poente">Nascente/Poente</option>
+                                    <option value="Norte" {{ old('orientation') == 'Norte' ? 'selected' : '' }}>Norte</option>
+                                    <option value="Sul" {{ old('orientation') == 'Sul' ? 'selected' : '' }}>Sul</option>
+                                    <option value="Este" {{ old('orientation') == 'Este' ? 'selected' : '' }}>Este</option>
+                                    <option value="Oeste" {{ old('orientation') == 'Oeste' ? 'selected' : '' }}>Oeste</option>
+                                    <option value="Nascente/Poente" {{ old('orientation') == 'Nascente/Poente' ? 'selected' : '' }}>Nascente/Poente</option>
                                 </select>
                             </div>
                         </div>
@@ -115,26 +137,26 @@
                     <div class="bg-white p-8 rounded shadow-sm border border-gray-100">
                         <h3 class="text-lg font-serif mb-6 text-[#c5a059]">3. Comodidades</h3>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="has_pool" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Piscina</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="has_pool" class="accent-[#c5a059] w-5 h-5" {{ old('has_pool') ? 'checked' : '' }}> <span class="text-sm">Piscina</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="has_garden" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Jardim</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="has_garden" class="accent-[#c5a059] w-5 h-5" {{ old('has_garden') ? 'checked' : '' }}> <span class="text-sm">Jardim</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="has_lift" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Elevador</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="has_lift" class="accent-[#c5a059] w-5 h-5" {{ old('has_lift') ? 'checked' : '' }}> <span class="text-sm">Elevador</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="has_terrace" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Terraço</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="has_terrace" class="accent-[#c5a059] w-5 h-5" {{ old('has_terrace') ? 'checked' : '' }}> <span class="text-sm">Terraço</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="has_air_conditioning" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Ar Condicionado</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="has_air_conditioning" class="accent-[#c5a059] w-5 h-5" {{ old('has_air_conditioning') ? 'checked' : '' }}> <span class="text-sm">Ar Condicionado</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="is_furnished" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Mobilado</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="is_furnished" class="accent-[#c5a059] w-5 h-5" {{ old('is_furnished') ? 'checked' : '' }}> <span class="text-sm">Mobilado</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="is_kitchen_equipped" class="accent-[#c5a059] w-5 h-5"> <span class="text-sm">Cozinha Equipada</span>
+                            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="checkbox" name="is_kitchen_equipped" class="accent-[#c5a059] w-5 h-5" {{ old('is_kitchen_equipped') ? 'checked' : '' }}> <span class="text-sm">Cozinha Equipada</span>
                             </label>
                         </div>
                     </div>
@@ -145,12 +167,12 @@
                         <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">WhatsApp (Nº Telemóvel)</label>
-                                <input type="text" name="whatsapp_number" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="351912345678">
+                                <input type="text" name="whatsapp_number" value="{{ old('whatsapp_number') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="351912345678">
                                 <p class="text-[10px] text-gray-400 mt-1">Insira o código do país sem + (Ex: 351...)</p>
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Tour YouTube (Link)</label>
-                                <input type="url" name="video_url" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="https://youtube.com/watch?v=...">
+                                <input type="url" name="video_url" value="{{ old('video_url') }}" class="w-full border border-gray-200 rounded px-4 py-3" placeholder="https://youtube.com/watch?v=...">
                             </div>
                         </div>
 
@@ -161,14 +183,26 @@
 
                         <div>
                             <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Galeria de Fotos (Múltiplas)</label>
-                            <input type="file" name="gallery[]" multiple accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200">
-                            <p class="text-[10px] text-gray-400 mt-1">Pressione Ctrl (ou Cmd) para selecionar várias fotos.</p>
+                            
+                            <input type="file" 
+                                   id="gallery-input" 
+                                   name="gallery[]" 
+                                   multiple 
+                                   accept="image/*" 
+                                   class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 cursor-pointer">
+                            
+                            <p class="text-[10px] text-gray-400 mt-1">
+                                Pode selecionar várias vezes. As fotos acumulam-se abaixo.
+                            </p>
+
+                            <div id="gallery-preview" class="grid grid-cols-3 md:grid-cols-5 gap-4 mt-4">
+                                </div>
                         </div>
                     </div>
 
                     <div class="bg-white p-8 rounded shadow-sm border border-gray-100">
                         <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Descrição Completa</label>
-                        <textarea name="description" rows="6" class="w-full border border-gray-200 rounded px-4 py-3 resize-y"></textarea>
+                        <textarea name="description" rows="6" class="w-full border border-gray-200 rounded px-4 py-3 resize-y">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="flex justify-end">
@@ -180,5 +214,80 @@
             </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('gallery-input');
+            const previewContainer = document.getElementById('gallery-preview');
+            const dt = new DataTransfer(); // Armazena os ficheiros acumulados
+
+            input.addEventListener('change', function() {
+                // Percorre os novos ficheiros selecionados
+                for(let i = 0; i < this.files.length; i++) {
+                    const file = this.files[i];
+                    
+                    // Adiciona ao DataTransfer
+                    dt.items.add(file);
+
+                    // Cria o elemento visual (Preview)
+                    const div = document.createElement('div');
+                    div.className = "photo-container relative h-24 w-full rounded-lg overflow-hidden border border-gray-200 shadow-sm group";
+                    
+                    const img = document.createElement('img');
+                    img.className = "h-full w-full object-cover";
+                    
+                    // Botão de Remover (X)
+                    const btn = document.createElement('button');
+                    btn.innerHTML = '&times;';
+                    btn.className = "remove-btn absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shadow-md hover:bg-red-600 focus:outline-none";
+                    btn.title = "Remover foto";
+
+                    // Ler a imagem para mostrar
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function(e) {
+                        img.src = e.target.result;
+                    };
+
+                    // Ação de Remover
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        div.remove(); // Remove do HTML
+                        updateInputFiles(file); // Remove do Input
+                    });
+
+                    div.appendChild(img);
+                    div.appendChild(btn);
+                    previewContainer.appendChild(div);
+                }
+
+                // Atualiza o input com a lista acumulada
+                this.files = dt.files;
+            });
+
+            // Função para recriar a lista de ficheiros sem o removido
+            function updateInputFiles(fileToRemove) {
+                const newDt = new DataTransfer();
+                
+                // Copia todos MENOS o que queremos apagar
+                for (let i = 0; i < dt.files.length; i++) {
+                    const file = dt.files[i];
+                    // Compara nome e tamanho para garantir que é o mesmo ficheiro
+                    if (file !== fileToRemove) {
+                        newDt.items.add(file);
+                    }
+                }
+
+                // Substitui o DataTransfer antigo pelo novo
+                dt.items.clear();
+                for (let i = 0; i < newDt.files.length; i++) {
+                    dt.items.add(newDt.files[i]);
+                }
+                
+                // Atualiza o input real
+                input.files = dt.files;
+            }
+        });
+    </script>
 </body>
 </html>

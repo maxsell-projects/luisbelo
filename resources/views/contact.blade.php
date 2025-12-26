@@ -18,7 +18,7 @@
                 <div class="space-y-4">
                     <h4 class="text-[10px] uppercase tracking-[0.4em] text-slate-900 font-bold">SAC</h4>
                     <p class="text-2xl font-serif text-slate-500 hover:text-slate-900 transition-colors">
-                        <a href="tel:919383222">919 383 222</a>
+                        <a href="tel:919383222">+351 919 383 222</a>
                     </p>
                 </div>
 

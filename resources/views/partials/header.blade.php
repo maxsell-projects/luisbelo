@@ -6,7 +6,7 @@
         <a href="{{ route('home') }}" class="block">
             <img src="{{ asset('img/logo.jpg') }}" 
                  alt="Luís Belo" 
-                 :class="{ 'brightness-100': !atTop, 'brightness-0 invert': atTop }"
+                 :class="{ 'brightness-50 mix-blend-multiply': !atTop, 'brightness-0 invert': atTop }"
                  class="h-12 w-auto transition-all duration-500 object-contain">
         </a>
 

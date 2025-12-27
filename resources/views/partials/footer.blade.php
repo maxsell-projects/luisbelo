@@ -32,7 +32,7 @@
                 <p class="text-slate-500 text-[11px] uppercase tracking-widest leading-loose font-light">
                     Rua Serpa Pinto, 77 A<br>
                     2640-534, Mafra — Portugal<br>
-                    <span class="inline-block mt-4 text-slate-900 font-bold">T. +351 919 383 222</span>
+                    <span class="inline-block mt-4 text-slate-900 font-bold">  T.+351 919 383 222</span>
                 </p>
             </div>
         </div>

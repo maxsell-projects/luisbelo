@@ -44,6 +44,10 @@
                     &copy; {{ date('Y') }} Luís Belo. Real Estate Excellence.
                 </p>
             </div>
+
+            <a href="https://www.maxselladvisor.com" target="_blank" class="block transition-opacity hover:opacity-75">
+                <img src="{{ asset('img/maxsell.png') }}" alt="MaxSell Advisor" class="h-8 w-auto grayscale opacity-80">
+            </a>
             
             <div class="flex gap-10">
                 <a href="#" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Política de Privacidade</a>

@@ -49,9 +49,10 @@
                 <img src="{{ asset('img/maxsell.png') }}" alt="MaxSell Advisor" class="h-8 w-auto grayscale opacity-80">
             </a>
             
-            <div class="flex gap-10">
-                <a href="#" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Política de Privacidade</a>
-                <a href="#" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Termos & Condições</a>
+            <div class="flex flex-wrap justify-center md:justify-end gap-6 md:gap-10">
+                <a href="{{ route('legal.privacy') }}" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Política de Privacidade</a>
+                <a href="{{ route('legal.terms') }}" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Termos & Condições</a>
+                <a href="{{ route('legal.cookies') }}" class="text-[9px] uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors">Cookies</a>
             </div>
         </div>
     </div>

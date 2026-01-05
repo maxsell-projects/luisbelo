@@ -31,6 +31,8 @@
 
     @include('partials.footer')
 
+    @include('partials.cookie-banner')
+
     <div class="fixed bottom-8 left-8 z-50">
         <button onclick="history.back()" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg transition hover:scale-110 hover:bg-slate-100 focus:outline-none border border-slate-200" aria-label="Voltar">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
@@ -76,5 +78,6 @@
             });
         });
     </script>
+    @stack('scripts')
 </body>
 </html>

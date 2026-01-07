@@ -11,9 +11,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed font-light max-w-sm italic">
                     Curadoria estratégica de propriedades exclusivas e consultoria de investimento imobiliário de alto padrão em Portugal.
                 </p>
+                {{-- Atualização das Redes Sociais no Footer --}}
                 <div class="flex gap-8 pt-4">
-                    <a href="#" class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 hover:text-slate-900 transition-colors">Instagram</a>
-                    <a href="#" class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 hover:text-slate-900 transition-colors">LinkedIn</a>
+                    <a href="https://www.instagram.com/luisbelo.consultor" target="_blank" class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 hover:text-slate-900 transition-colors">Instagram</a>
+                    <a href="https://www.facebook.com/luisbelo.consultor" target="_blank" class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 hover:text-slate-900 transition-colors">Facebook</a>
                 </div>
             </div>
 

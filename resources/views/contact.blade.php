@@ -37,9 +37,10 @@
                     </p>
                 </div>
 
+                {{-- Atualização das Redes Sociais --}}
                 <div class="pt-8 border-t border-slate-100 flex gap-8">
-                    <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">Instagram</a>
-                    <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">LinkedIn</a>
+                    <a href="https://www.instagram.com/luisbelo.consultor" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">Instagram</a>
+                    <a href="https://www.facebook.com/luisbelo.consultor" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-slate-400 hover:text-slate-900 transition-colors italic">Facebook</a>
                 </div>
             </div>
 
